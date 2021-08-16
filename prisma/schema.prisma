@@ -12,18 +12,47 @@ datasource db {
 
 model User {
   id    Int     @id @default(autoincrement())
-  email String  @unique
+  firstName String
+  lastName  String
+  email     String  @unique
+}
+
+model DesignCategories {
+  id    Int     @id @default(autoincrement())
   name  String
 }
 
-model Post {
+model MoodBoards {
+  id    Int     @id @default(autoincrement())
+  creator    User    @relation(fields: [userId], references: [id])
+}
+
+model ColorsPlates {
+  id    Int     @id @default(autoincrement())
+  image  String
+  moodboard    MoodBoards    @relation(fields: [moodBoardId], references: [id])
+}
+
+
+model Accessories {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  viewCount Int      @default(0)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  name     String
+  description   String?
+  image  String
+  moodboard    MoodBoards    @relation(fields: [moodBoardId], references: [id])
+  accessoriesType     AccessoriesTypes    @relation(fields: [accessoryTypeId], references: [id])
+
+}
+
+model AccessoriesTypes {
+  id        Int      @id @default(autoincrement())
+  type String
+  
+}
+
+
+model ColorsPlates {
+  id    Int     @id @default(autoincrement())
+  image  String
+  moodboard    MoodBoards    @relation(fields: [moodBoardId], references: [id])
 }
