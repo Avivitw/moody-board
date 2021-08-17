@@ -1,0 +1,76 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id      Int     @id @default(autoincrement())
+  name    String
+  email   String  @unique
+  
+  moodBoards MoodBoard[]
+
+  @@map(name: "users")
+}
+
+model Category {
+  id          Int         @id @default(autoincrement())
+  name        String      @db.VarChar(100)
+  parentId    Int         @default(0)
+
+  parent      Category?   @relation("MainCategories",fields: [parentId], references: [id])
+  children    Category[]  @relation("MainCategories")
+
+  moodBoards  MoodBoard[]
+  accessories Accessory[]
+  
+  @@map(name: "categories")
+}
+
+model MoodBoard {
+  id            Int     @id @default(autoincrement())
+  userId        Int
+  creator       User    @relation(fields: [userId], references: [id])
+  
+  categories    Category[]
+  colors        Color[]
+  accessories   Accessory[]   
+
+
+}
+
+model Color {
+  id            Int     @id @default(autoincrement())
+  r             Int
+  g             Int
+  b             Int
+
+  moodBoardId   Int? 
+  moodBoard     MoodBoard? @relation(fields: [moodBoardId], references: [id])
+
+  accessoryId   Int?
+  accessory     Accessory? @relation(fields: [accessoryId], references: [id])
+
+}
+
+
+model Accessory {
+  id              Int      @id @default(autoincrement())
+  name            String
+  description     String?
+  image           String
+
+  categories    Category[]
+  moodBoards    MoodBoard[]
+  colors        Color[]
+
+}
+
+
