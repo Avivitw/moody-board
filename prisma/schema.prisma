@@ -10,11 +10,12 @@ datasource db {
 }
 
 
-model User {
+model Users {
   id    Int     @id @default(autoincrement())
-  firstName String
-  lastName  String
+  name String
   email     String  @unique
+  moodBoards MoodBoards[]
+  
 }
 
 model DesignCategories {
@@ -24,13 +25,21 @@ model DesignCategories {
 
 model MoodBoards {
   id    Int     @id @default(autoincrement())
-  creator    User    @relation(fields: [userId], references: [id])
+  userId Int
+  creator    Users    @relation(fields: [userId], references: [id])
+  colorsPlateId Int
+  colorsPlate    ColorsPlates    @relation(fields: [colorsPlateId], references: [id])
+  accessoryId Int
+  accessories     Accessories    @relation(fields: [accessoryId], references: [id])
+
+
 }
 
 model ColorsPlates {
   id    Int     @id @default(autoincrement())
   image  String
-  moodboard    MoodBoards    @relation(fields: [moodBoardId], references: [id])
+  moodBoards MoodBoards[]
+
 }
 
 
@@ -39,20 +48,14 @@ model Accessories {
   name     String
   description   String?
   image  String
-  moodboard    MoodBoards    @relation(fields: [moodBoardId], references: [id])
+  accessoryTypeId Int
   accessoriesType     AccessoriesTypes    @relation(fields: [accessoryTypeId], references: [id])
+  moodBoards MoodBoards[]
 
 }
 
 model AccessoriesTypes {
   id        Int      @id @default(autoincrement())
   type String
-  
-}
-
-
-model ColorsPlates {
-  id    Int     @id @default(autoincrement())
-  image  String
-  moodboard    MoodBoards    @relation(fields: [moodBoardId], references: [id])
+  accessories Accessories[]
 }
