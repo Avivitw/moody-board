@@ -7,8 +7,8 @@ export default function Board() {
         <Image
           src="/6_21__Color_Bloom.png"
           alt="Picture of ta moodboard"
-          width={500}
-          height={500}
+          width={700}
+          height={700}
         />
         <div>
           <div>Name</div>
