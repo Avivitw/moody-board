@@ -17,6 +17,39 @@ const userData = [
   },
 ];
 
+const colorData = [
+  {
+    r: 174,
+    g: 191,
+    b: 115,
+  },
+  {
+    r: 70,
+    g: 85,
+    b: 79,
+  },
+  {
+    r: 241,
+    g: 175,
+    b: 121,
+  },
+  {
+    r: 251,
+    g: 214,
+    b: 171,
+  },
+  {
+    r: 250,
+    g: 228,
+    b: 216,
+  },
+  {
+    r: 251,
+    g: 234,
+    b: 233,
+  },
+];
+
 async function main() {
   console.log(`Start seeding ...`);
   for (const u of userData) {
@@ -24,6 +57,11 @@ async function main() {
       data: u,
     });
     console.log(`Created user with id: ${user.id}`);
+  }
+  for (const c of colorData) {
+    const color = await prisma.color.create({
+      data: c,
+    });
   }
   console.log(`Seeding finished.`);
 }
