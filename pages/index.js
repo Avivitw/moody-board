@@ -1,6 +1,11 @@
-import Head from 'next/head'
+import Head from "next/head";
+import React from "react";
+import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 export default function Home() {
+  const [session, loading] = useSession();
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -10,14 +15,14 @@ export default function Home() {
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <h1 className="text-6xl font-bold">
-          Welcome to{' '}
+          Welcome to{" "}
           <a className="text-blue-600" href="https://nextjs.org">
             Next.js!
           </a>
         </h1>
 
         <p className="mt-3 text-2xl">
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
             pages/index.js
           </code>
@@ -64,6 +69,24 @@ export default function Home() {
             </p>
           </a>
         </div>
+        <div>
+          {!session && (
+            <>
+              Not signed in <br />
+              <button onClick={signIn}>Sign In</button>
+            </>
+          )}
+          {session && (
+            <>
+              Signed in as {session.user.email} <br />
+              <div>You can now access our super secret pages</div>
+              <button>
+                <Link href="/secret">To the secret</Link>
+              </button>
+              <button onClick={signOut}>sign out</button>
+            </>
+          )}
+        </div>
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t">
@@ -73,10 +96,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
         </a>
       </footer>
     </div>
-  )
+  );
 }
