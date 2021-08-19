@@ -2,6 +2,44 @@ import Image from "next/image";
 import Palette from "../components/Palette";
 
 export default function Board() {
+  const samplePalette = [
+    {
+      moodBoardId: 1,
+      r: 174,
+      g: 191,
+      b: 115,
+    },
+    {
+      moodBoardId: 1,
+      r: 70,
+      g: 85,
+      b: 79,
+    },
+    {
+      moodBoardId: 1,
+      r: 241,
+      g: 175,
+      b: 121,
+    },
+    {
+      moodBoardId: 1,
+      r: 251,
+      g: 214,
+      b: 171,
+    },
+    {
+      moodBoardId: 1,
+      r: 250,
+      g: 228,
+      b: 216,
+    },
+    {
+      moodBoardId: 1,
+      r: 251,
+      g: 234,
+      b: 233,
+    },
+  ];
   return (
     <>
       <div class="flex flex-row bg-secondaryA">
@@ -23,7 +61,7 @@ export default function Board() {
         </div>
       </div>
       <h3 class="palette">Main colors palette</h3>
-      <Palette></Palette>
+      <Palette colors={samplePalette}></Palette>
     </>
   );
 }
