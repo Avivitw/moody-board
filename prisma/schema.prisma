@@ -81,6 +81,7 @@ model Category {
 
 model MoodBoard {
   id            Int     @id @default(autoincrement())
+  name          String
   userId        Int
   creator       User    @relation(fields: [userId], references: [id])
   
@@ -110,7 +111,7 @@ model Accessory {
   id              Int      @id @default(autoincrement())
   name            String
   description     String?
-  image           String
+  image           String?
 
   categories    Category[]
   moodBoards    MoodBoard[]
