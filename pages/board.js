@@ -42,9 +42,10 @@ export default function Board() {
   ];
   return (
     <>
-      <div class="flex flex-row bg-secondaryA">
+      <div class="flex flex-row bg-secondaryA max-w-screen-lg mx-auto">
         <div>
           <Image
+            class="img-palette"
             src="/6_21__Color_Bloom.png"
             alt="Picture of a moodboard"
             width={700}
@@ -60,7 +61,7 @@ export default function Board() {
           <span class="m-8">8-18-2021</span>
         </div>
       </div>
-      <h3 class="palette">Main colors palette</h3>
+      <h3 class="h-palette">Main colors palette</h3>
       <Palette colors={samplePalette}></Palette>
     </>
   );
