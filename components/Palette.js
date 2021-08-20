@@ -3,18 +3,18 @@ const colorRgb = function (color) {
   return rgbColor;
 };
 
+const Circle = (c) => {
+  return <div class="circle" style={{ backgroundColor: colorRgb(c) }}></div>;
+};
+
 const Palette = (props) => {
   let colors = props.colors.map((c) => {
-    return (
-      <div
-        class="rounded-full h-24 w-24 flex items-center justify-center mx-8"
-        style={{ backgroundColor: colorRgb(c) }}
-      ></div>
-    );
+    return Circle(c);
   });
+
   return (
     <div>
-      <div class="flex flex-row bg-secondaryA rounded-lg">{colors}</div>
+      <div class="palette">{colors}</div>
     </div>
   );
 };
