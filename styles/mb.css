@@ -11,9 +11,12 @@
 }
 
 .div-board {
-  @apply max-w-screen-lg mx-auto text-primary text-2xl m-8;
+  @apply max-w-screen-lg mx-auto text-primary  m-8;
 }
 
+.div-details {
+  @apply flex flex-row  max-w-screen-lg mx-auto;
+}
 .h-palette {
   @apply relative flex flex-wrap items-center justify-between max-w-screen-lg mx-auto px-2 py-3 bg-white mb-3 text-secondaryB text-2xl;
 }

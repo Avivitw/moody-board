@@ -42,7 +42,7 @@ export default function Board() {
   ];
   return (
     <>
-      <div class="flex flex-row bg-secondaryA max-w-screen-lg mx-auto">
+      <div class="flex flex-row bg-secondaryA  max-w-screen-lg mx-auto">
         <div>
           <Image
             class="img-palette"
@@ -52,14 +52,14 @@ export default function Board() {
             height={700}
           />
         </div>
-        <div>
-          <div class="div-board">MoodyBoard Name</div>
-          <span class="m-8">Avivit Moodboard</span>
-          <div class="div-board">Categories</div>
-          <span class="m-8">Nordic, Living- room</span>
-          <div class="div-board">Date created</div>
-          <span class="m-8">8-18-2021</span>
-        </div>
+      </div>
+      <div class="div-details">
+        <div class="div-board">MoodyBoard Name</div>
+        <span class="m-8 text-2xl">Avivit Moodboard</span>
+        <div class="div-board">Categories</div>
+        <span class="m-8 text-2xl">Nordic, Living- room</span>
+        <div class="div-board">Date created</div>
+        <span class="m-8 text-2xl">8-18-2021</span>
       </div>
       <h3 class="h-palette">Main colors palette</h3>
       <Palette colors={samplePalette}></Palette>
