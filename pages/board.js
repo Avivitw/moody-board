@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Palette from "../components/Palette";
+import BoardInfo from "../components/BoardInfo";
+import BoardStyle from "../components/BoardStyle";
 
 export default function Board() {
   const samplePalette = [
@@ -53,14 +55,8 @@ export default function Board() {
           />
         </div>
       </div>
-      <div class="div-details">
-        <div class="div-board">MoodyBoard Name</div>
-        <span class="m-8 text-2xl">Avivit Moodboard</span>
-        <div class="div-board">Categories</div>
-        <span class="m-8 text-2xl">Nordic, Living- room</span>
-        <div class="div-board">Date created</div>
-        <span class="m-8 text-2xl">8-18-2021</span>
-      </div>
+      <BoardInfo></BoardInfo>
+      <BoardStyle></BoardStyle>
       <h3 class="h-palette">Main colors palette</h3>
       <Palette colors={samplePalette}></Palette>
     </>
