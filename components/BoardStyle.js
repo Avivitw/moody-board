@@ -1,8 +1,10 @@
 const BoardStyle = () => {
   return (
     <div>
-      <div class="div-board ">Design - Style</div>
-      <div class="m-8 text-2xl max-w-screen-lg mx-auto">Minimalist</div>
+      <div class=" text-2xl max-w-screen-lg mx-auto text-primary">
+        Design - Style
+      </div>
+      <div class="m-4 text-2xl max-w-screen-lg mx-auto">Minimalist</div>
 
       <p class="max-w-screen-lg mx-auto">
         One of the most thoroughly modern interior design styles to consider,
