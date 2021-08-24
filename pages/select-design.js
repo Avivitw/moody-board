@@ -1,9 +1,11 @@
+import { PrismaClient, Prisma } from "@prisma/client";
+
 import Image from "next/image";
 // import Palette from "../components/Palette";
 import BoardInfo from "../components/BoardInfo";
 import BoardStyle from "../components/BoardStyle";
 
-export default function selectDesign() {
+export default function selectDesign(props) {
   return (
     <>
       <div class="div-board">
@@ -12,17 +14,24 @@ export default function selectDesign() {
       <p class="m-4 text-xl max-w-screen-lg mx-auto">
         First let's pick style that you love
       </p>
-      <div class="self-center max-w-screen-lg mx-auto">
-        <Image
-          class="max-w-screen-lg mx-auto self-center"
-          src="/minimalist.jpeg"
-          alt="minimalist design"
-          width={700}
-          height={700}
-        />
-      </div>
 
-      <BoardStyle></BoardStyle>
+      <BoardStyle designStyles={props.designStyles}></BoardStyle>
     </>
   );
+}
+
+export async function getStaticProps(context) {
+  const prisma = new PrismaClient();
+
+  const cat = await prisma.category.findMany({
+    where: {
+      parentId: 1,
+    },
+  });
+  // console.log(cat);
+  return {
+    props: {
+      designStyles: cat,
+    },
+  };
 }
