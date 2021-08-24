@@ -66,15 +66,17 @@ model VerificationRequest {
 }
 
 model Category {
-  id          Int         @id @default(autoincrement())
-  name        String      @db.VarChar(100)
-  parentId    Int         @default(0)
+  id              Int         @id @default(autoincrement())
+  name            String      @db.VarChar(100)
+  description     String?
+  parentId        Int?  
+  image   String?       
 
-  parent      Category?   @relation("MainCategories",fields: [parentId], references: [id])
-  children    Category[]  @relation("MainCategories")
+  // parent          Category?   @relation("MainCategories",fields: [parentId], references: [id])
+  // children        Category[]  @relation("MainCategories")
 
-  moodBoards  MoodBoard[]
-  accessories Accessory[]
+  moodBoards      BoardsCategories[]
+  accessories     Accessory[]
   
   @@map(name: "categories")
 }
@@ -85,12 +87,21 @@ model MoodBoard {
   userId        Int
   creator       User    @relation(fields: [userId], references: [id])
   
-  categories    Category[]
+  categories    BoardsCategories[]
   colors        Color[]
   accessories   Accessory[]   
 
-
+  @@map(name: "moodboard")
 }
+
+model BoardsCategories {
+  id     Int   @id @default(autoincrement())
+  moodboard   MoodBoard? @relation(fields: [moodboardId], references: [id])
+  category    Category?  @relation(fields: [categoryId], references: [id])
+  moodboardId Int?
+  categoryId  Int?
+}
+
 
 model Color {
   id            Int     @id @default(autoincrement())
