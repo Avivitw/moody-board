@@ -5,7 +5,6 @@ const BoardStyle = (props) => {
     return (
       <>
         <div class="m-4 text-2xl max-w-screen-lg mx-auto">{style.name}</div>
-        <p class="max-w-screen-lg mx-auto">{style.description}</p>
         <div class="self-center max-w-screen-lg mx-auto">
           <Image
             class="max-w-screen-lg mx-auto self-center"
@@ -15,15 +14,16 @@ const BoardStyle = (props) => {
             height={300}
           />
         </div>
+        <p class="max-w-screen-lg mx-auto">{style.description}</p>
       </>
     );
   });
 
   return (
     <div>
-      <div class=" text-2xl max-w-screen-lg mx-auto text-primary">
+      {/* <div class=" text-2xl max-w-screen-lg mx-auto text-primary">
         Design - Style
-      </div>
+      </div> */}
       <div>{categories}</div>
     </div>
   );

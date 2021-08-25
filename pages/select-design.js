@@ -1,11 +1,14 @@
 import { PrismaClient, Prisma } from "@prisma/client";
+import { useState } from "react";
 
-import Image from "next/image";
+// import Image from "next/image";
 // import Palette from "../components/Palette";
-import BoardInfo from "../components/BoardInfo";
+// import BoardInfo from "../components/BoardInfo";
 import BoardStyle from "../components/BoardStyle";
 
 export default function selectDesign(props) {
+  const [designCategory, setDesignCategory] = useState("");
+
   return (
     <>
       <div class="div-board">
