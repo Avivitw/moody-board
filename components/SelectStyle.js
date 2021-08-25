@@ -1,11 +1,21 @@
-import Image from "next/image";
+import { useContext } from "react";
+import { boardCreateContext } from "../providers/BoardProvider";
 
 const SelectStyle = (props) => {
+  const { styleId, setStyleId } = useContext(boardCreateContext);
+
   let categories = props.designStyles.map((style) => {
+    let classes = "overflow-hidden rounded-lg shadow-md m-8 border-2";
+    if (styleId === style.id) {
+      classes += " shadow-2xl border-primary";
+    }
     return (
       <div
-        className=" overflow-hidden rounded-lg shadow-lg m-8 "
+        className={classes}
         key={style.id}
+        onClick={() => {
+          setStyleId(style.id);
+        }}
       >
         <img
           className="object-cover w-full h-80"
