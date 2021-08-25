@@ -8,35 +8,36 @@ export default function BoardProvider(props) {
     accessArr: [],
   });
 
-  const setStyleId = function (id) {
+  const setStyleId = function (styleId) {
     setBoardStyle((prev) => {
-      return { ...prev, id };
+      return { ...prev, styleId };
     });
   };
-
+  // TODO need to change the way to update colors
   const setColors = function (colors) {
     setBoardStyle((prev) => {
       return { ...prev, colors };
     });
   };
-
-  const setAcess = function (accessories) {
+  // TODO need to create and and remove accessories helper functions
+  const setAccessories = function (accessories) {
     setBoardStyle((prev) => {
       return { ...prev, accessories };
     });
   };
 
   const boardStyleData = {
-    setBoardStyle,
-    boardStyle,
+    styleId: boardStyle.styleId,
+    setStyleId,
+    setColors,
   };
 
   // We can use this component to wrap any content we want to share this context
   return (
-    <boardContext.Provider value={boardStyleData}>
+    <boardCreateContext.Provider value={boardStyleData}>
       {props.children}
-    </boardContext.Provider>
+    </boardCreateContext.Provider>
   );
 }
 
-export const searchContext = createContext();
+export const boardCreateContext = createContext();
