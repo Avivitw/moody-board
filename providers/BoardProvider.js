@@ -2,11 +2,12 @@ import { useContext, createContext, useState, useEffect } from "react";
 
 export default function BoardProvider(props) {
   const [boardStyle, setBoardStyle] = useState({
-    step: 0,
     styleId: "",
     colorsArr: [],
     accessArr: [],
   });
+
+  const [selectedStep, setSelectedStep] = useState(["0", "1", "2", "3"]);
 
   const setStyleId = function (styleId) {
     setBoardStyle((prev) => {
@@ -30,6 +31,8 @@ export default function BoardProvider(props) {
     styleId: boardStyle.styleId,
     setStyleId,
     setColors,
+    selectedStep,
+    setSelectedStep,
   };
 
   // We can use this component to wrap any content we want to share this context
