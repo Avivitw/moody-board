@@ -7,7 +7,13 @@ export default function BoardProvider(props) {
     accessArr: [],
   });
 
-  const [selectedStep, setSelectedStep] = useState(["0", "1", "2", "3"]);
+  const steps = {
+    STYLE: "Style",
+    PALETTE: "Palette",
+    ACCESSORIES: "Accesories",
+    BOARD: "Board Details",
+  };
+  const [selectedStep, setSelectedStep] = useState(steps.STYLE);
 
   const setStyleId = function (styleId) {
     setBoardStyle((prev) => {
@@ -31,6 +37,7 @@ export default function BoardProvider(props) {
     styleId: boardStyle.styleId,
     setStyleId,
     setColors,
+    steps,
     selectedStep,
     setSelectedStep,
   };
