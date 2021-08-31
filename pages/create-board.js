@@ -1,5 +1,9 @@
 import SelectStyle from "../components/SelectStyle";
+import StepBar from "../components/StepBar";
+
 import BoardProvider from "../providers/BoardProvider";
+import { useContext } from "react";
+import { boardCreateContext } from "../providers/BoardProvider";
 
 import { PrismaClient } from "@prisma/client";
 
@@ -12,9 +16,18 @@ export default function CreateBoard(props) {
 }
 
 function InnerCreateBoard(props) {
+  const { steps, selectedStep, setSelectedStep } =
+    useContext(boardCreateContext);
   return (
     <>
-      <SelectStyle designStyles={props.designStyles}></SelectStyle>
+      <StepBar
+        steps={Object.values(steps)}
+        selectedStep={selectedStep}
+        setSelectedStep={setSelectedStep}
+      ></StepBar>
+      {selectedStep === steps.STYLE && (
+        <SelectStyle designStyles={props.designStyles}></SelectStyle>
+      )}
     </>
   );
 }

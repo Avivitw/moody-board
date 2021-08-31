@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { boardCreateContext } from "../providers/BoardProvider";
 
 const SelectStyle = (props) => {
-  const { styleId, setStyleId } = useContext(boardCreateContext);
+  const { styleId, setStyleId, steps, setSelectedStep } =
+    useContext(boardCreateContext);
 
   let categories = props.designStyles.map((style) => {
     let classes = "overflow-hidden rounded-lg shadow-md m-8 border-2";
