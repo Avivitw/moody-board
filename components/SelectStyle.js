@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { boardCreateContext } from "../providers/BoardProvider";
 
 const SelectStyle = (props) => {
-  const { styleId, setStyleId } = useContext(boardCreateContext);
+  const { styleId, setStyleId, steps, setSelectedStep } =
+    useContext(boardCreateContext);
 
   let categories = props.designStyles.map((style) => {
     let classes = "overflow-hidden rounded-lg shadow-md m-8 border-2";
@@ -34,10 +35,18 @@ const SelectStyle = (props) => {
     );
   });
 
+  let selectedStyle = props.designStyles.find((style) => style.id === styleId);
+
   return (
-    <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4  mx-auto">
-      {categories}
-    </div>
+    <>
+      <h2 className="text-3xl font-semibold tracking-tight text-primary  ml-8">
+        {!selectedStyle && "Select Style"}
+        {selectedStyle && selectedStyle.name}
+      </h2>
+      <div className="md:grid md:grid-cols-2 lg:grid-cols-3 gap-4  mx-auto">
+        {categories}
+      </div>
+    </>
   );
 };
 
