@@ -1,4 +1,6 @@
 import SelectStyle from "../components/SelectStyle";
+import SelectColors from "../components/SelectColors";
+
 import StepBar from "../components/StepBar";
 
 import BoardProvider from "../providers/BoardProvider";
@@ -28,6 +30,7 @@ function InnerCreateBoard(props) {
       {selectedStep === steps.STYLE && (
         <SelectStyle designStyles={props.designStyles}></SelectStyle>
       )}
+      {selectedStep === steps.PALETTE && <SelectColors></SelectColors>}
     </>
   );
 }
@@ -40,7 +43,7 @@ export async function getStaticProps(context) {
       parentId: 1,
     },
   });
-  // console.log(cat);
+
   return {
     props: {
       designStyles: cat,

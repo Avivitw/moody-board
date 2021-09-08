@@ -8,7 +8,7 @@ const Circle = (c) => {
 };
 
 const Palette = (props) => {
-  let colors = props.colors.map((c) => {
+  let colors = props.designColors.map((c) => {
     return Circle(c);
   });
 
